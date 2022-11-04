@@ -7,3 +7,4 @@ created server and testing it on remote repo
 > __Class Name__ : Sams
 
 > __Attributes__  : Sams_Item(String), Sams_Brand(String), Sams_quantity(number), Sams_Item_Price(number), Sams_Area(String)
+[REPO](https://f2db68ravipati.onrender.com/)
