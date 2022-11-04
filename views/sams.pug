@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  - var results = [{"Sams_Item": "Laptop", "Sams_Brand": "HP", "Sams_quantity": 1, "Sams_Item_Price": 456.99, "Sams_area":"St.joe"},{"Sams_Item": "Air Pots Pro", "Sams_Brand": "Apple", "Sams_quantity": 2, "Sams_Item_Price": 194.56,"Sams_area":"Kansas"},{"Sams_Item": "TV", "Sams_Brand": "LG", "Sams_quantity": 1, "Sams_Item_Price": 2435.88,"Sams_area":"Dallas"}]
+  div.container-fluid 
+    div.row 
+        each item, index in results
+            div.col-sm-2(onclick=`buy(${index})`)  Item Name: #{item["Sams_Item"]} <br> Item Brand: #{item["Sams_Brand"]} <br> Quantity: #{item["Sams_quantity"]} <br> Item Price: #{item["Sams_Item_Price"]} <br> Sams Area: #{item["Sams_area"]}
+  script.
+    function buy(index) {
+      alert("You purchased item " + index)
+    }
