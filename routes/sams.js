@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('sams', { title: 'Sams Club Products' });
-});
+const Sams_controllers = require('../controllers/Sams');
+
+
+router.get('/',Sams_controllers.Sams_view_all_Page);
 
 module.exports = router;

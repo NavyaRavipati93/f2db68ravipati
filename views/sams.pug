@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-  - var results = [{"Sams_Item": "Laptop", "Sams_Brand": "HP", "Sams_quantity": 1, "Sams_Item_Price": 456.99, "Sams_area":"St.joe"},{"Sams_Item": "Air Pots Pro", "Sams_Brand": "Apple", "Sams_quantity": 2, "Sams_Item_Price": 194.56,"Sams_area":"Kansas"},{"Sams_Item": "TV", "Sams_Brand": "LG", "Sams_quantity": 1, "Sams_Item_Price": 2435.88,"Sams_area":"Dallas"}]
+  - var results = Sams_results
   div.container-fluid 
     div.row 
         each item, index in results
