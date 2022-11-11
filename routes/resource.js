@@ -7,8 +7,8 @@ var Sams_controller = require('../controllers/Sams');
 
 /// API ROUTE /// 
 
-// GET resources base. 
-router.get('/', api_controller.api); 
+// GET request for one costume. 
+router.get('/sams/:id', Sams_controller.Sams_detail); 
 
 /// Sams ROUTES /// 
 

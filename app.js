@@ -77,19 +77,19 @@ async function recreateDB(){
   }); 
   let instance2 = new 
   Sams({
-    Sams_Item: "Laptop",
-    Sams_Brand:"HP",
+    Sams_Item: "Fridge",
+    Sams_Brand:"LG",
     Sams_quantity : 1,
-    Sams_Item_Price :456.99,
-    Sams_Area: "St.joe"
+    Sams_Item_Price :80.99,
+    Sams_Area: "Kansas"
   }); 
   let instance3 = new 
   Sams({
-    Sams_Item: "Laptop",
-    Sams_Brand:"HP",
-    Sams_quantity : 1,
-    Sams_Item_Price :456.99,
-    Sams_Area: "St.joe"
+    Sams_Item: "TV",
+    Sams_Brand:"Lancer",
+    Sams_quantity : 2,
+    Sams_Item_Price :600.99,
+    Sams_Area: "Omaha"
   }); 
   instance1.save( function(err,doc) { 
     if(err) return console.error(err); 
