@@ -1,0 +1,45 @@
+extends layout 
+ 
+block content 
+  h1(class = 'container-fluid p-5 text-center')= title 
+ 
+  form(id='SamsForm',class='justify-content-center p-2 bg-light text-center text-dark',action="/resource/Sams", method="POST") 
+    div.form-group 
+        label.SamsAttr(for='Sams_Item' style="margin-right: 5px;") Sams_Item 
+        input#Sams_Item(type='text', name='Sams_Item' style="width:500px;") 
+    br
+    div.form-group
+        label.SamsAttr(for='Sams_Brand' style="margin-right: 5px;") Sams_Brand 
+        input#Sams_Brand(type='text', name='Sams_Brand' style="width:500px;")
+    br
+    div.form-group 
+        label.SamsAttr(for='Sams_quantity' style="margin-right: 5px;") Sams_quantity 
+        input#Sams_quantity(type='number', name='Sams_quantity' style="width:500px;") 
+    br
+    div.form-group 
+        label.SamsAttr(for='Sams_Item_Price' style="margin-right: 5px;") Sams_Item_Price 
+        input#Sams_Item_Price(type='number', name='Sams_Item_Price' style="width:500px;") 
+    br
+    div.form-group 
+        label.SamsAttr(for='Sams_Area' style="margin-right: 5px;") Sams_Area 
+        input#Sams_Area(type='text', name='Sams_Area' style="width:500px;") 
+    br
+    input(class="btn btn-success" type="submit") 
+ 
+  script. 
+    document.forms['SamsForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'POST', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Save succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Save failed " + error ) 
+      }); 
+    }); 

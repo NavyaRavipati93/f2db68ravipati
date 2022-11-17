@@ -16,7 +16,7 @@ exports.Sams_list = async function(req, res) {
 exports.Sams_detail = function(req, res) { 
     res.send('NOT IMPLEMENTED: Sams detail: ' + req.params.id); 
 }; 
-// for a specific Costume. 
+// for a specific Sams. 
 exports.Sams_detail = async function(req, res) { 
     console.log("detail"  + req.params.id) 
     try { 
@@ -33,11 +33,54 @@ exports.Sams_create_post = function(req, res) {
     res.send('NOT IMPLEMENTED: Sams create POST'); 
 }; 
 
-// Handle Sams delete form on DELETE. 
-exports.Sams_delete = function(req, res) { 
-    res.send('NOT IMPLEMENTED: Sams delete DELETE ' + req.params.id); 
+exports.Sams_view_one_Page = async function(req, res) { 
+    console.log("single view for id "  + req.query.id) 
+    try{ 
+        result = await Sams.findById( req.query.id) 
+        res.render('Samsdetail',  
+{ title: 'Sams Detail', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
 }; 
 
+exports.Sams_create_Page =  function(req, res) { 
+    console.log("create view") 
+    try{ 
+        res.render('Samscreate', { title: 'Sams Create'}); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+ 
+exports.Sams_update_Page =  async function(req, res) { 
+    console.log("update view for item "+req.query.id) 
+    try{ 
+        let result = await Sams.findById(req.query.id) 
+        res.render('Samsupdate', { title: 'Sams Update', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+
+exports.Sams_delete_Page = async function(req, res) { 
+    console.log("Delete view for id "  + req.query.id) 
+    try{ 
+        result = await Sams.findById(req.query.id) 
+        res.render('Samsdelete', { title: 'Sams Delete', toShow: 
+result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
 // Handle Sams update form on PUT. 
 exports.Sams_update_put = async function(req, res) { 
     console.log(`update on id ${req.params.id} with body 
@@ -59,6 +102,18 @@ exports.Sams_update_put = async function(req, res) {
             res.send(`{"error": ${err}: Update for id ${req.params.id} 
     failed`); 
         } 
+}; 
+
+exports.Sams_delete = async function(req, res) { 
+    console.log("delete "  + req.params.id) 
+    try { 
+        result = await Sams.findByIdAndDelete( req.params.id) 
+        console.log("Removed " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": Error deleting ${err}}`); 
+    } 
 }; 
 
 // VIEWS 

@@ -7,7 +7,7 @@ var Sams_controller = require('../controllers/Sams');
 
 /// API ROUTE /// 
 
-// GET request for one costume. 
+// GET request for one Sams. 
 router.get('/sams/:id', Sams_controller.Sams_detail); 
 
 /// Sams ROUTES /// 
@@ -26,5 +26,13 @@ router.get('/Sams/:id', Sams_controller.Sams_detail);
 
 // GET request for list of all Sams items. 
 router.get('/Sams', Sams_controller.Sams_list); 
+
+router.get('/detail', Sams_controller.Sams_view_one_Page); 
+
+router.get('/create', Sams_controller.Sams_create_Page); 
+
+router.get('/update', Sams_controller.Sams_update_Page); 
+
+router.get('/delete', Sams_controller.Sams_delete_Page); 
 
 module.exports = router; 

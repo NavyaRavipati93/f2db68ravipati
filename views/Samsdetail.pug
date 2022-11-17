@@ -1,0 +1,32 @@
+extends layout 
+ 
+block content 
+  h1= title 
+  if (toShow == null) 
+    h2 No instance to delete 
+  else
+    - let Samsid = toShow._id 
+    - let Sams_Item = toShow.Sams_Item 
+    - let Sams_Brand = toShow.Sams_Brand 
+    - let Sams_quantity = toShow.Sams_quantity 
+    - let Sams_Item_Price = toShow.Sams_Item_Price
+    - let Sams_Area = toShow.Sams_Area 
+    div 
+        div.row 
+        div(class='SamsAttr mr-3') Sams ID is: 
+        div #{Samsid} 
+        div.row 
+        div(class='SamsAttr mr-3') Sams_Item is: 
+        div #{Sams_Item} 
+        div.row 
+        div(class='SamsAttr mr-3') Sams_Brand is: 
+        div #{Sams_Brand} 
+        div.row 
+        div(class='SamsAttr mr-3') Sams_quantity is: 
+        div #{Sams_quantity} 
+        div.row 
+        div(class='SamsAttr mr-3') Sams_Item_Price is: 
+        div #{Sams_Item_Price} 
+        div.row 
+        div(class='SamsAttr mr-3') Sams_Area is: 
+        div #{Sams_Area} 

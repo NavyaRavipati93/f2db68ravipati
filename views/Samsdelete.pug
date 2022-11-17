@@ -1,0 +1,63 @@
+extends layout 
+ 
+block content 
+  h1(class = 'container-fluid p-5 text-center')= title 
+ 
+  if (toShow == null) 
+    h2 No instance to delete 
+  else 
+    - let Samsid = toShow._id 
+    - let Sams_Item = toShow.Sams_Item 
+    - let Sams_Brand = toShow.Sams_Brand 
+    - let Sams_quantity = toShow.Sams_quantity 
+    - let Sams_Item_Price = toShow.Sams_Item_Price
+    - let Sams_Area = toShow.Sams_Area  
+   
+    - let actionid = "/resource/Sams/" + Samsid 
+    script let actionid = "#{actionid}" 
+    div(class="container text-center")
+      div(class='justify-content-center p-2 text-center text-dark') 
+        div.row 
+          div(class='p-2 flex-fill SamsAttr mr-3') Sams ID is: 
+          div #{Samsid} 
+        div.row 
+          div(class='p-2 flex-fill SamsAttr mr-3') Sams_Item is: 
+          div #{Sams_Item} 
+        div.row 
+          div(class='p-2 flex-fill SamsAttr mr-3') Sams_Brand is: 
+          div #{Sams_Brand} 
+        div.row 
+          div(class='p-2 flex-fill SamsAttr mr-3') Sams_quantity is: 
+          div #{Sams_quantity} 
+        div.row 
+          div(class='p-2 flex-fill SamsAttr mr-3') Sams_Item_Price is: 
+          div #{Sams_Item_Price}
+        div.row 
+          div(class='p-2 flex-fill SamsAttr mr-3') Sams_Area is: 
+          div #{Sams_Area}
+      div
+        button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
+        button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
+ 
+  script. 
+    function cancel() { 
+      // Go back to the home page for the Sams collection 
+      window.location.href='/Sams' 
+    } 
+  script. 
+    function deleteOnid() { 
+      console.log("starting delete") 
+      // delete first 
+      fetch(actionid, { 
+        method: 'DELETE'   
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Delete succeded") 
+        window.location.href='/Sams' 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Delete failed " + error ) 
+      }); 
+    } 
